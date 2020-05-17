@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ConnectionService} from '../../Services/connection-service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,7 @@ import {ConnectionService} from '../../Services/connection-service';
 export class LoginComponent implements OnInit {
   private loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private connService: ConnectionService) { }
+  constructor(private fb: FormBuilder, private connService: ConnectionService, private router: Router) { }
 
   ngOnInit() {
     this.loginForm = this.fb.group({
@@ -25,6 +26,7 @@ export class LoginComponent implements OnInit {
       if (response.aBoolean === true) {
         if (response.msg.includes('|ROLE ADMIN')) {
           // TODO : navigate to admin dashboard but gérer AuthN/AuthZ avec le back !
+          this.router.navigateByUrl('/dashboard/path/read');
         } else {
           window.alert('Identifiants incorrects');
           this.loginForm.reset();

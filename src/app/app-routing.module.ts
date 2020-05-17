@@ -19,7 +19,6 @@ import {PathRemoveComponent} from './PathComposition/path-remove/path-remove.com
 const routes: Routes = [
   { path: 'front-page', component: FrontPageComponent},
   { path: '',   redirectTo: 'front-page', pathMatch: 'full' },
-  { path: '**', component: LoginComponent},
   { path: 'dashboard', component: DashboardComponent, children: [
       { path: 'path', component: PathDashComponent, children: [
           { path: 'read', component: PathReadComponent},
@@ -35,7 +34,8 @@ const routes: Routes = [
           { path: 'update', component: TaskUpdateComponent},
           { path: 'create', component: TaskCreateComponent}
         ]}
-    ]}
+    ]},
+  { path: '**', component: LoginComponent},
 ];
 
 @NgModule({
