@@ -19,6 +19,7 @@ import { LoginComponent } from './Structure/login/login.component';
 import { FrontPageComponent } from './Structure/front-page/front-page.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { DashboardComponent } from './Structure/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { HttpClientModule } from '@angular/common/http';
     TaskDashComponent,
     HeaderComponent,
     LoginComponent,
-    FrontPageComponent
+    FrontPageComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
