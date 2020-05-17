@@ -1,9 +1,8 @@
-/* tslint:disable */
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Path} from '../Models/path';
+import {Path} from '../_Models/path';
 import {Observable} from 'rxjs';
-import { Task } from '../Models/task';
+import { Task } from '../_Models/task';
 
 const URI = 'http://localhost:8080/admin/api/path/';
 const httpOptions = {
@@ -18,7 +17,7 @@ export class PathService {
   constructor(private http: HttpClient) { }
 
   public getPaths(): Observable<Path[]> {
-    return this.http.get<Path[]>(URI);
+    return this.http.get<Path[]>(URI, );
   }
 
   public getPath(id: number): Observable<Path> {

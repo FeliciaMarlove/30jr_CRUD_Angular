@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import { Task } from '../Models/task';
+import { Task } from '../_Models/task';
 
 const URI = 'http://localhost:8080/admin/api/task/';
 const httpOptions = {

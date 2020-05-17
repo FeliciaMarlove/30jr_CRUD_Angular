@@ -18,7 +18,7 @@ import { HeaderComponent } from './Structure/header/header.component';
 import { LoginComponent } from './Structure/login/login.component';
 import { FrontPageComponent } from './Structure/front-page/front-page.component';
 import {ReactiveFormsModule} from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { DashboardComponent } from './Structure/dashboard/dashboard.component';
 
 @NgModule({
@@ -46,7 +46,9 @@ import { DashboardComponent } from './Structure/dashboard/dashboard.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    // {provide: HTTP_INTERCEPTORS, useClass: TokenService, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
