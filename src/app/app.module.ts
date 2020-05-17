@@ -17,6 +17,8 @@ import { TaskDashComponent } from './Task/task-dash/task-dash.component';
 import { HeaderComponent } from './Structure/header/header.component';
 import { LoginComponent } from './Structure/login/login.component';
 import { FrontPageComponent } from './Structure/front-page/front-page.component';
+import {ReactiveFormsModule} from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { FrontPageComponent } from './Structure/front-page/front-page.component'
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
