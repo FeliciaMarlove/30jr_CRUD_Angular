@@ -17,7 +17,7 @@ export class PathService {
   constructor(private http: HttpClient) { }
 
   public getPaths(): Observable<Path[]> {
-    return this.http.get<Path[]>(URI, );
+    return this.http.get<Path[]>(URI);
   }
 
   public getPath(id: number): Observable<Path> {

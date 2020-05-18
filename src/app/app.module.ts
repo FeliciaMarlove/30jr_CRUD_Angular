@@ -20,6 +20,7 @@ import { FrontPageComponent } from './Structure/front-page/front-page.component'
 import {ReactiveFormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { DashboardComponent } from './Structure/dashboard/dashboard.component';
+import {XhrInterceptor} from './_Security/xhr-interceptor';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,7 @@ import { DashboardComponent } from './Structure/dashboard/dashboard.component';
     HttpClientModule
   ],
   providers: [
-    // {provide: HTTP_INTERCEPTORS, useClass: TokenService, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
 })

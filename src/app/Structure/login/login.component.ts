@@ -26,17 +26,14 @@ export class LoginComponent implements OnInit {
   onLogin() {
     const DTO = {email : this.loginForm.controls.username.value, password : this.loginForm.controls.password.value};
     this.connService.connect(DTO).subscribe( response => {
-      if (response.aBoolean === true) {
-        if (response.msg.includes('|ROLE ADMIN')) {
+      if (response !== null && response.userRole === 'ADMIN') {
+          this.connService.authenticated = true;
           this.router.navigateByUrl('/dashboard/path/read');
         } else {
           window.alert('Identifiants incorrects');
           this.loginForm.reset();
         }
-      } else {
-        window.alert(response.msg);
-        this.loginForm.reset();
       }
-    });
+    );
   }
 }
