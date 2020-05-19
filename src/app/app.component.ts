@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import {ConnectionService} from './_Services/connection-service';
-import {HttpClient} from '@angular/common/http';
-import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +10,6 @@ export class AppComponent {
   title = 'Interface d\'administration : 30 jours pour désencombrer';
 
   constructor(private app: ConnectionService) {
-    this.app.connect(undefined);
+    //this.app.connect(undefined);
   }
 }

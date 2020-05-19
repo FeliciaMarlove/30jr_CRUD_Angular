@@ -30,10 +30,24 @@ export class LoginComponent implements OnInit {
           this.connService.authenticated = true;
           this.router.navigateByUrl('/dashboard/path/read');
         } else {
-          window.alert('Identifiants incorrects');
-          this.loginForm.reset();
-        }
+        /*
+        L'utilisateur existe mais ce n'est pas un "admin"
+         */
+        sessionStorage.setItem('auth', undefined);
+        sessionStorage.clear();
+        this.loginForm.reset();
+        window.alert('Identifiants incorrects');
       }
+      },
+      /*
+      L'utilisateur ne se trouve pas en base de données OU le mot de passe est incorrect
+       */
+        () => {
+          sessionStorage.setItem('auth', undefined);
+          sessionStorage.clear();
+          this.loginForm.reset();
+          window.alert('Identifiants incorrects');
+        }
     );
   }
 }

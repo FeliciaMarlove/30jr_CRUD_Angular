@@ -7,11 +7,25 @@ import {Observable} from 'rxjs';
 })
 export class XhrInterceptor implements HttpInterceptor {
 
+  /**
+   * clone les headers pour les requêtes http
+   * @param req
+   * @param next
+   */
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     const xhr = req.clone({
-      headers: req.headers.set('X-Requested-With', 'XMLHttpRequest')
+      headers: req.headers.set('authorization', 'Basic ' + localStorage.getItem('auth'))
     });
     return next.handle(xhr);
   }
+
+  /*
+  Note : inclure plusieurs headers (au lieu de "headers:") :
+  setHeaders: {
+        'Content-Type' : 'application/json; charset=utf-8',
+        'Accept'       : 'application/json',
+        'Authorization': `Bearer ${AuthService.getToken()}`,
+      },
+   */
 
 }
