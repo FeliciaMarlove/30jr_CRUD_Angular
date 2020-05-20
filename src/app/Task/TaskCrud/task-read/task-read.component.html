@@ -1,1 +1,15 @@
-<p>task-read works!</p>
+<section class="main-content">
+
+  <div *ngFor="let task of tasks" (click)="onSelect(task)">
+    {{task.taskName}}
+  </div>
+
+</section>
+
+
+<section class="side-menu">
+
+  <button [routerLink]="['/dashboard/task/create']">Créer</button>
+  <button [routerLink]="['/dashboard/task/update']">Modifier</button>
+
+</section>

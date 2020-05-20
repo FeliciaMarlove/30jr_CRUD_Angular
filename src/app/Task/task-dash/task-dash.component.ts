@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Task } from 'src/app/_Models/task';
+import {TaskCommunicationService} from '../../_Services/task-communication.service';
 
 @Component({
   selector: 'app-task-dash',
@@ -10,6 +12,6 @@ export class TaskDashComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    
   }
-
 }

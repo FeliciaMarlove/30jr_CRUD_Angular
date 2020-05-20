@@ -20,7 +20,7 @@ export class XhrInterceptor implements HttpInterceptor {
   }
 
   /*
-  Note : inclure plusieurs headers (au lieu de "headers:") :
+  Note : pour inclure plusieurs headers (au lieu de "headers:") :
   setHeaders: {
         'Content-Type' : 'application/json; charset=utf-8',
         'Accept'       : 'application/json',

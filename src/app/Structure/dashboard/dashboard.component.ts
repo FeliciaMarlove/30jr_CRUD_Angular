@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ConnectionService} from '../../_Services/connection-service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,11 +9,16 @@ import {ConnectionService} from '../../_Services/connection-service';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private connectionService: ConnectionService) { }
+  constructor(private connectionService: ConnectionService, private router: Router) { }
 
   ngOnInit() {
   }
 
-  authenticated() { return this.connectionService.authenticated; }
+  public logout() {
+    localStorage.setItem('auth', undefined);
+    localStorage.removeItem('auth');
+    sessionStorage.clear();
+    this.router.navigateByUrl('/');
+  }
 
 }

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {User} from '../_Models/user';
 import {BehaviorSubject, Observable, PartialObserver, Subscription} from 'rxjs';
+import {Router} from '@angular/router';
 
 const URI = 'http://localhost:8080/connection/';
 
