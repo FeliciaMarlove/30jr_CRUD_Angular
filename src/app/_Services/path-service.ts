@@ -36,8 +36,12 @@ export class PathService {
     return this.http.put(URI + id, path, httpOptions);
   }
 
-  public deletePath(id: number): Observable<any> {
+  public desactivatePath(id: number): Observable<any> {
     return this.http.delete(URI + id);
+  }
+
+  public activatePath(id: number): Observable<any> {
+    return this.http.delete(URI + id + '/activate');
   }
 
   public addTask(pathId: number, taskId: number, index: number): Observable<any> {

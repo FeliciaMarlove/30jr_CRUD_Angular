@@ -39,8 +39,7 @@ export class TaskUpdateComponent implements OnInit {
         this.taskCommunicationService.updateTask(undefined);
         this.router.navigateByUrl('/dashboard/task/read');
       } else {
-        window.alert('Une erreur est survenue');
-        console.log(response);
+        window.alert(response.msg);
       }
     } );
   }
