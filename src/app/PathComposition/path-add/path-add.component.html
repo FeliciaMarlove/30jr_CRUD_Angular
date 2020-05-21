@@ -12,8 +12,10 @@ Parcours {{path?.pathName}}
 <section class="right-actions">
 
   <button (click)="onAdd()" [disabled]="conflict">Ajouter</button>
-  <button [routerLink]="['/dashboard/path/composition/read']">Retour</button>
+  <button (click)="onLeave()">Retour</button>
 
-  <input type="number" [(ngModel)]="position" [disabled]="selection.length > 1">
+  <br>Position (facultatif) :
+  <br>(comprise entre 1 et {{tasksFromPath.length + 1}})
+  <input type="number" min="0" [(ngModel)]="position" [disabled]="selection.length > 1">
 
 </section>

@@ -16,8 +16,6 @@ export class PathAddComponent implements OnInit {
   private tasksFromPath: Task[] = [];
   private path: Path;
   private selection: Task[] = [];
-  //TODO  : compris entre 1 et la dernière positions dispo dans l'array (affiché)
-  // + gérer l'effacement (check si effacer = rien)
   private position: number;
   private full: boolean;
   private conflict: boolean;
@@ -53,11 +51,13 @@ export class PathAddComponent implements OnInit {
   }
 
   onSelect(task: Task) {
-    //TODO : implémenter le "full" dans le template pour empêcher de sélectionner (surbrillance if !full) & vérif liste == surbrillance
-    // + msg alerte si position et sélec > 1 && disable bouton
-    // contrôler les comportements avec la case position !
+    // TODO : implémenter le "full" dans le template pour empêcher de sélectionner (surbrillance if !full) & vérif liste == surbrillance
     if (this.selection.length + this.tasksFromPath.length < 30) {
-      if (this.selection.length > 1 && this.position !== undefined) {
+      if (this.selection.length > 0 && this.position !== null) {
+        window.alert('Sélectionnez un seul défi pour définir une position');
+        return;
+      }
+      if (this.selection.length > 1 && this.position !== null) {
         window.alert('Sélectionnez un seul défi pour définir une position');
         this.conflict = true;
         return;
@@ -70,14 +70,21 @@ export class PathAddComponent implements OnInit {
   }
 
   onAdd() {
-    //TODO gestion réponse + navig
-    // + check comportement back si deux fois mm dans la liste
-    // ! DB scabreuse, create drop & recommencer tout début pour test
-    console.log(this.position ? this.position : 666)
     this.selection.forEach(oneTask => {
-      this.pathService.addTask(this.path.pathId, oneTask.taskId, this.position ? this.position : 666).subscribe(response => {
-        console.log(response);
+      this.pathService.addTask(this.path.pathId, oneTask.taskId, this.position ? this.position - 1 : 666).subscribe(response => {
+        if (response.aBoolean === true) {
+          this.router.navigateByUrl('/dashboard/path/composition/read');
+        }
+        if (response.aBoolean === false) {
+          window.alert(response.msg);
+          this.selection = [];
+        }
       });
     });
+  }
+
+  onLeave() {
+    this.selection = [];
+    this.router.navigateByUrl('/dashboard/path/composition/read');
   }
 }
