@@ -1,7 +1,7 @@
 <section class="main-content">
 
   <div *ngFor="let task of tasks" (click)="onSelect(task)">
-    {{task.taskName}}
+    {{task.taskName}} - {{task.taskShortDescription}} - {{task.taskLongDescription}} - {{task.taskActive}}
   </div>
 
 </section>
@@ -10,6 +10,6 @@
 <section class="side-menu">
 
   <button [routerLink]="['/dashboard/task/create']">Créer</button>
-  <button [routerLink]="['/dashboard/task/update']">Modifier</button>
+  <button [routerLink]="['/dashboard/task/update']" [disabled]="!hasSelection">Modifier</button>
 
 </section>

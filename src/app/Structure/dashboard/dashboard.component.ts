@@ -15,8 +15,8 @@ export class DashboardComponent implements OnInit {
   }
 
   public logout() {
-    localStorage.setItem('auth', undefined);
-    localStorage.removeItem('auth');
+    sessionStorage.setItem('auth', undefined);
+    sessionStorage.removeItem('auth');
     sessionStorage.clear();
     this.router.navigateByUrl('/');
   }

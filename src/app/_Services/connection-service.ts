@@ -21,7 +21,7 @@ export class ConnectionService {
     headers: new HttpHeaders((user ? {
       authorization: 'Basic ' + btoa(user.email + ':' + user.password)
     } : {}))  };
-  localStorage.setItem('auth', btoa(user.email + ':' + user.password));
+  sessionStorage.setItem('auth', btoa(user.email + ':' + user.password));
   return this.http.post<User>(URI + 'connect', user, headersAuth);
   }
 }

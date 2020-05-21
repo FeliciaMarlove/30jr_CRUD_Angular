@@ -14,7 +14,7 @@ export class XhrInterceptor implements HttpInterceptor {
    */
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     const xhr = req.clone({
-      headers: req.headers.set('authorization', 'Basic ' + localStorage.getItem('auth'))
+      headers: req.headers.set('authorization', 'Basic ' + sessionStorage.getItem('auth'))
     });
     return next.handle(xhr);
   }

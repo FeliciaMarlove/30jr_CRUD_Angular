@@ -10,6 +10,7 @@ import {TaskCommunicationService} from '../../../_Services/task-communication.se
 })
 export class TaskReadComponent implements OnInit {
   private tasks: Task[];
+  private hasSelection: boolean;
 
   constructor(private taskService: TaskService, private taskCommunicationService: TaskCommunicationService) { }
 
@@ -20,9 +21,9 @@ export class TaskReadComponent implements OnInit {
   initTasks() {
     this.taskService.getTasks().subscribe( tasks => this.tasks = tasks);
   }
-
-
+  
   onSelect(task: Task) {
     this.taskCommunicationService.updateTask(task);
+    this.hasSelection = true;
   }
 }
