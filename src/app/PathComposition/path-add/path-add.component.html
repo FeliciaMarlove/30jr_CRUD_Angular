@@ -1,1 +1,19 @@
-<p>path-add works!</p>
+<h4>Ajouter des défis au parcours</h4>
+Parcours {{path?.pathName}}
+
+<section class="left-list">
+
+  <div *ngFor="let task of tasksActive" (click)="onSelect(task)">
+    {{task.taskName}}
+  </div>
+
+</section>
+
+<section class="right-actions">
+
+  <button (click)="onAdd()" [disabled]="conflict">Ajouter</button>
+  <button [routerLink]="['/dashboard/path/composition/read']">Retour</button>
+
+  <input type="number" [(ngModel)]="position" [disabled]="selection.length > 1">
+
+</section>

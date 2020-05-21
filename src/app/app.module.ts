@@ -17,7 +17,7 @@ import { TaskDashComponent } from './Task/task-dash/task-dash.component';
 import { HeaderComponent } from './Structure/header/header.component';
 import { LoginComponent } from './Structure/login/login.component';
 import { FrontPageComponent } from './Structure/front-page/front-page.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { DashboardComponent } from './Structure/dashboard/dashboard.component';
 import {XhrInterceptor} from './_Security/xhr-interceptor';
@@ -47,7 +47,8 @@ import { PathTasksComponent } from './PathComposition/path-tasks/path-tasks.comp
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true}
