@@ -1,15 +1,15 @@
 <section class="main-content">
 
-  <div *ngFor="let path of paths">
-  {{path.pathName}}
+  <div *ngFor="let path of paths" (click)="onSelect(path)">
+  {{path.pathName}} - {{path.pathShortDescription}} - {{path.pathLongDescription}} - {{path.pathActive}}
 </div>
 
 </section>
 
 <section class="side-menu">
 
-  <button>Créer</button>
-  <button>Modifier</button>
-  <button>Composition</button>
+  <button [routerLink]="['/dashboard/path/create']">Créer</button>
+  <button [routerLink]="['/dashboard/path/update']" [disabled]="!hasSelection">Modifier</button>
+  <button [routerLink]="['/dashboard/path/composition']" [disabled]="!hasSelection">Composition</button>
 
 </section>
