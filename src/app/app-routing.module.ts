@@ -14,6 +14,7 @@ import {TaskUpdateComponent} from './Task/TaskCrud/task-update/task-update.compo
 import {TaskCreateComponent} from './Task/TaskCrud/task-create/task-create.component';
 import {PathAddComponent} from './PathComposition/path-add/path-add.component';
 import {PathRemoveComponent} from './PathComposition/path-remove/path-remove.component';
+import {PathTasksComponent} from './PathComposition/path-tasks/path-tasks.component';
 
 
 const routes: Routes = [
@@ -26,7 +27,8 @@ const routes: Routes = [
           { path: 'create', component: PathCreateComponent},
           { path: 'composition', component: PathCompositionComponent, children: [
               { path: 'add', component: PathAddComponent},
-              { path: 'remove', component: PathRemoveComponent}
+              { path: 'remove', component: PathRemoveComponent},
+              { path: 'read', component: PathTasksComponent}
             ]}
         ]},
       { path: 'task', component: TaskDashComponent, children: [

@@ -21,6 +21,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { DashboardComponent } from './Structure/dashboard/dashboard.component';
 import {XhrInterceptor} from './_Security/xhr-interceptor';
+import { PathTasksComponent } from './PathComposition/path-tasks/path-tasks.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import {XhrInterceptor} from './_Security/xhr-interceptor';
     HeaderComponent,
     LoginComponent,
     FrontPageComponent,
-    DashboardComponent
+    DashboardComponent,
+    PathTasksComponent
   ],
   imports: [
     BrowserModule,

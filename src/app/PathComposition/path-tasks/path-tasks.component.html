@@ -1,0 +1,7 @@
+<div *ngFor="let task of tasks, let i = index">
+  {{i+1}} {{task.taskId}} {{task.taskShortDescription}}
+</div>
+
+<button [routerLink]="['/dashboard/path/composition/add']" [disabled]="pathLength === 30">Ajouter des défis</button>
+<button [routerLink]="['/dashboard/path/composition/remove']" [disabled]="pathLength === 0">Supprimer des défis</button>
+<button [routerLink]="['/dashboard/path/read']">Retour à la liste</button>
