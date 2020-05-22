@@ -1,1 +1,18 @@
-<p>path-remove works!</p>
+<h4>Ajouter des défis au parcours</h4>
+Parcours {{path?.pathName}}
+
+<section class="left-list">
+
+  <div *ngFor="let task of tasks" (click)="onSelect(task)">
+    {{task.taskName}}
+  </div>
+
+</section>
+
+<section class="right-actions">
+
+  <button (click)="onDelete()">Supprimer</button>
+  <button (click)="onLeave()">Retour</button>
+
+</section>
+

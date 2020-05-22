@@ -48,7 +48,7 @@ export class PathService {
     return this.http.get(URI + pathId + '/add/' + taskId + '/' + index);
   }
 
-  public removeTask(pathId: number, taskId: number) {
+  public removeTask(pathId: number, taskId: number): Observable<any> {
     return this.http.get(URI + pathId + '/remove/' + taskId);
   }
 }

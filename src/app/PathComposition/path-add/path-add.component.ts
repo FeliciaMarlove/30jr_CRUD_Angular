@@ -29,6 +29,7 @@ export class PathAddComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.selection = [];
     this.initPath();
     this.initTasksActive();
   }
@@ -53,11 +54,11 @@ export class PathAddComponent implements OnInit {
   onSelect(task: Task) {
     // TODO : implémenter le "full" dans le template pour empêcher de sélectionner (surbrillance if !full) & vérif liste == surbrillance
     if (this.selection.length + this.tasksFromPath.length < 30) {
-      if (this.selection.length > 0 && this.position !== null) {
+      if (this.selection.length > 0 && this.position) {
         window.alert('Sélectionnez un seul défi pour définir une position');
         return;
       }
-      if (this.selection.length > 1 && this.position !== null) {
+      if (this.selection.length > 1 && this.position) {
         window.alert('Sélectionnez un seul défi pour définir une position');
         this.conflict = true;
         return;
@@ -73,6 +74,7 @@ export class PathAddComponent implements OnInit {
     this.selection.forEach(oneTask => {
       this.pathService.addTask(this.path.pathId, oneTask.taskId, this.position ? this.position - 1 : 666).subscribe(response => {
         if (response.aBoolean === true) {
+          this.selection = [];
           this.router.navigateByUrl('/dashboard/path/composition/read');
         }
         if (response.aBoolean === false) {
@@ -84,7 +86,13 @@ export class PathAddComponent implements OnInit {
   }
 
   onLeave() {
-    this.selection = [];
-    this.router.navigateByUrl('/dashboard/path/composition/read');
+    if (this.selection.length > 0) {
+      if (confirm('Voulez-vous quitter sans apporter les modifications ?')) {
+        this.selection = [];
+        this.router.navigateByUrl('/dashboard/path/composition/read');
+      }
+    } else {
+      this.router.navigateByUrl('/dashboard/path/composition/read');
+    }
   }
 }
