@@ -1,21 +1,39 @@
-<h4>Ajouter des défis au parcours</h4>
-Parcours {{path?.pathName}}
+<h5>Ajouter des défis au parcours</h5>
+<section class="main-content">
+  <div class="headline"><strong>Parcours :</strong> {{path.pathName}}
+    <bdi class="labels">|</bdi>
+    {{path.pathShortDescription}}</div>
+  <section class="box">
+    <section class="split left-list">
 
-<section class="left-list">
+      <div *ngFor="let task of tasksActive" (click)="onSelect(task)">
+        <hr>
+        <div [class.selected]="selection.includes(task)">
+          <bdi class="labels">[</bdi>
+          {{task.taskName}}
+          <bdi class="labels"> ][</bdi>
+          {{task.taskShortDescription.substring(0, 80)}} {{task.taskShortDescription.length > 80 ? '[...]' : ''}}
+          <bdi class="labels"> ]</bdi>
+        </div>
+      </div>
+      <hr>
 
-  <div *ngFor="let task of tasksActive" (click)="onSelect(task)">
-    <div [class.selected]="selection.includes(task)">{{task.taskName}}</div>
-  </div>
+    </section>
+
+    <section class="split right-actions">
+
+      <button mat-flat-button color="primary" (click)="onAdd()" [disabled]="conflict || selection.length === 0">
+        Ajouter
+      </button>
+      <button mat-flat-button color="warn" (click)="onLeave()">Retour</button>
+
+      <br>Position (facultatif)
+      <br>(comprise entre 1 et {{tasksFromPath.length + 1}})
+      <br><br>
+      <input type="number" min="0" [(ngModel)]="position" [disabled]="selection.length > 1">
+
+    </section>
+  </section>
 
 </section>
 
-<section class="right-actions">
-
-  <button (click)="onAdd()" [disabled]="conflict">Ajouter</button>
-  <button (click)="onLeave()">Retour</button>
-
-  <br>Position (facultatif) :
-  <br>(comprise entre 1 et {{tasksFromPath.length + 1}})
-  <input type="number" min="0" [(ngModel)]="position" [disabled]="selection.length > 1">
-
-</section>

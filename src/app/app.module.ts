@@ -23,7 +23,7 @@ import { DashboardComponent } from './Structure/dashboard/dashboard.component';
 import {XhrInterceptor} from './_Security/xhr-interceptor';
 import { PathTasksComponent } from './PathComposition/path-tasks/path-tasks.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import {MatButtonToggleModule} from '@angular/material';
+import {MatButtonModule, MatButtonToggleModule, MatInputModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -52,7 +52,9 @@ import {MatButtonToggleModule} from '@angular/material';
     HttpClientModule,
     FormsModule,
     NoopAnimationsModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatButtonModule,
+    MatInputModule,
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true}

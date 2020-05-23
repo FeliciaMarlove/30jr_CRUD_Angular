@@ -1,18 +1,29 @@
-<h4>Ajouter des défis au parcours</h4>
-Parcours {{path?.pathName}}
+<h5>Supprimer des défis du parcours</h5>
+<section class="main-content">
+  <div class="headline"><strong>Parcours :</strong> {{path.pathName}}
+    <bdi class="labels">|</bdi>
+    {{path.pathShortDescription}}</div>
+<section class="box">
+  <section class="split left-list">
 
-<section class="left-list">
+    <div *ngFor="let task of tasks" (click)="onSelect(task)">
+      <hr>
+      <div [class.selected]="selection.includes(task)"><bdi class="labels">[</bdi>{{task.taskName}}<bdi class="labels"> ][</bdi>
+        {{task.taskShortDescription.substring(0, 80)}} {{task.taskShortDescription.length > 80 ? '[...]' : ''}}
+        <bdi class="labels"> ]</bdi>
+      </div>
+    </div>
+    <hr>
+  </section>
 
-  <div *ngFor="let task of tasks" (click)="onSelect(task)">
-    <div [class.selected]="selection.includes(task)">{{task.taskName}}</div>
-  </div>
+  <section class="split right-actions">
+
+    <button mat-flat-button color="primary" (click)="onDelete()" [disabled]="selection.length === 0">Supprimer</button>
+    <button mat-flat-button color="warn" (click)="onLeave()">Retour</button>
+
+  </section>
 
 </section>
-
-<section class="right-actions">
-
-  <button (click)="onDelete()">Supprimer</button>
-  <button (click)="onLeave()">Retour</button>
 
 </section>
 

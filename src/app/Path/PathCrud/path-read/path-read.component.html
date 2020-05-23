@@ -7,7 +7,7 @@
       [class.selected]="path === selection"
       [class.inactive]="!path.pathActive"
     >
-      <bdi class="labels">[</bdi> {{path.pathName}} <bdi class="labels">][</bdi> {{path.pathShortDescription}} <bdi class="labels">][</bdi> {{path.pathLongDescription.substring(0,250)}} <bdi class="labels">][</bdi> ({{path.tasks ? path.tasks.length : 0}})<bdi class="labels">]</bdi>
+      <bdi class="labels">[</bdi> {{path.pathName}} <bdi class="labels">][</bdi> {{path.pathShortDescription}} <bdi class="labels">][</bdi>{{path.pathLongDescription.substring(0,250)}}{{path.pathLongDescription.length > 250 ? '[...]' : ''}} <bdi class="labels"> ][</bdi> ({{path.tasks ? path.tasks.length : 0}})<bdi class="labels">]</bdi>
     </div>
   </div>
   <hr>
@@ -15,8 +15,8 @@
 
 <section class="side-menu">
 
-  <button [routerLink]="['/dashboard/path/create']">Créer</button>
-  <button [routerLink]="['/dashboard/path/update']" [disabled]="!hasSelection">Modifier</button>
-  <button [routerLink]="['/dashboard/path/composition/read']" [disabled]="!hasSelection">Composition</button>
+  <button mat-flat-button color="primary" [routerLink]="['/dashboard/path/create']">Créer</button>
+  <button mat-flat-button color="primary" [routerLink]="['/dashboard/path/update']" [disabled]="!hasSelection">Modifier</button>
+  <button mat-flat-button color="primary" [routerLink]="['/dashboard/path/composition/read']" [disabled]="!hasSelection">Composition</button>
 
 </section>

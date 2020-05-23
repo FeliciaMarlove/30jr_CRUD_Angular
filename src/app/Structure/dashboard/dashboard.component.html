@@ -1,4 +1,6 @@
-<button [routerLink]="['./path/read']">Parcours</button>
-<button [routerLink]="['./task/read']">Défis</button>
-<router-outlet></router-outlet>
-<button (click)="logout()">Se déconnecter</button>
+<button mat-flat-button color="accent" [routerLink]="['./path/read']">Parcours</button>
+<button mat-flat-button color="accent" [routerLink]="['./task/read']">Défis</button>
+<section class="router-outlet">
+  <router-outlet></router-outlet>
+</section>
+<button mat-flat-button color="warn" (click)="logout()">Se déconnecter</button>

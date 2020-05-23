@@ -52,6 +52,7 @@ export class PathRemoveComponent implements OnInit {
     this.selection.forEach(task => {
       this.pathService.removeTask(this.path.pathId, task.taskId).subscribe( response => {
         if (response.aBoolean === true) {
+          window.alert('Défi(s) supprimé(s) du parcours')
           this.selection = [];
           this.router.navigateByUrl('/dashboard/path/composition/read');
         } else {

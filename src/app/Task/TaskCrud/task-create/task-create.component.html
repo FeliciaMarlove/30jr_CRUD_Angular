@@ -1,13 +1,16 @@
 <h4>Nouveau défi</h4>
-<form [formGroup]="form" (ngSubmit)="onCreate()">
-  Nom :
-  <input formControlName="taskName" maxlength="45">
-  <br>
-  Desc. courte :
-  <input formControlName="taskShortDescription" maxlength="225">
-  <br>
-  Desc. longue :
-  <input formControlName="taskLongDescription" maxlength="1000">
-  <button type="submit" [disabled]="form.pristine || form.invalid">Enregistrer</button>
-</form>
-<button (click)="onCancel()">Retour à la liste</button>
+<section class="main-content">
+  <form [formGroup]="form" (ngSubmit)="onCreate()">
+    <div>Nom :</div>
+    <input formControlName="taskName" maxlength="45" size="40px">
+    <br><br>
+    <div>Desc. courte :</div>
+    <textarea formControlName="taskShortDescription" maxlength="225" rows="3" cols="100"></textarea>
+    <br><br>
+    <div>Desc. longue :</div>
+    <textarea formControlName="taskLongDescription" maxlength="1000" rows="12" cols="100"></textarea>
+    <button mat-flat-button color="primary" type="submit" [disabled]="form.pristine || form.invalid">Enregistrer</button>
+  </form>
+  <button mat-flat-button color="warn" (click)="onCancel()">Retour à la liste</button>
+</section>
+

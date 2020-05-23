@@ -12,8 +12,8 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$admin-trente-primary: mat-palette($mat-indigo);
-$admin-trente-accent: mat-palette($mat-pink, A200, A100, A400);
+$admin-trente-primary: mat-palette($mat-orange);
+$admin-trente-accent: mat-palette($mat-lime);
 
 // The warn palette is optional (defaults to red).
 $admin-trente-warn: mat-palette($mat-red);
@@ -28,9 +28,6 @@ $admin-trente-theme: mat-light-theme($admin-trente-primary, $admin-trente-accent
 
 /* You can add global styles to this file, and also import other style files */
 
-*{
-font-family: Verdana, Arial;
-}
 
 .selected {
   background: orange;
@@ -51,3 +48,65 @@ font-family: Verdana, Arial;
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+button[mat-flat-button] {
+  font-size: 16px;
+  margin: 15px;
+}
+
+h3 {
+  text-align: center;
+  font-family: Georgia;
+  font-size: 24px;
+}
+
+h4 {
+  font-family: Georgia;
+  font-size: 22px;
+  font-style: italic;
+  text-align: center;
+}
+
+h5 {
+  font-family: Georgia;
+  font-size: 18px;
+  text-align: center;
+}
+
+.main-content {
+  padding: 12px;
+}
+
+.side-menu {
+
+}
+
+.router-outlet {
+  border: dimgrey 1px solid;
+  margin: 10px;
+}
+
+.headline {
+  border: 1px solid darkgrey;
+  padding: 5px;
+}
+
+.split {
+  flex-wrap: wrap;
+}
+
+.box {
+  display: flex;
+}
+
+.left-list {
+  width: 75%;
+  float: left;
+}
+
+.right-actions {
+  float: right;
+  padding: 20px;
+  text-align: center;
+}
+
