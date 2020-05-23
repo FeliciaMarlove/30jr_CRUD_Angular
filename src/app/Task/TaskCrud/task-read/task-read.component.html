@@ -1,7 +1,7 @@
 <section class="main-content">
 
   <div *ngFor="let task of tasks" (click)="onSelect(task)">
-    {{task.taskName}} - {{task.taskShortDescription}} - {{task.taskLongDescription}} - {{task.taskActive}}
+    <div [class.selected]="task === selection">{{task.taskName}} - {{task.taskShortDescription}} - {{task.taskLongDescription}} - {{task.taskActive}}</div>
   </div>
 
 </section>

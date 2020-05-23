@@ -1,7 +1,7 @@
 <section class="main-content">
 
   <div *ngFor="let path of paths" (click)="onSelect(path)">
-  {{path.pathName}} - {{path.pathShortDescription}} - {{path.pathLongDescription}} - {{path.pathActive}}
+    <div [class.selected]="path === selection">{{path.pathName}} - {{path.pathShortDescription}} - {{path.pathLongDescription}} - {{path.pathActive}}</div>
 </div>
 
 </section>

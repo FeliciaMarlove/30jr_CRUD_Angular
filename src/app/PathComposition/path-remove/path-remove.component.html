@@ -4,7 +4,7 @@ Parcours {{path?.pathName}}
 <section class="left-list">
 
   <div *ngFor="let task of tasks" (click)="onSelect(task)">
-    {{task.taskName}}
+    <div [class.selected]="selection.includes(task)">{{task.taskName}}</div>
   </div>
 
 </section>

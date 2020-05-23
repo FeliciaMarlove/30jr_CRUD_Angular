@@ -11,6 +11,7 @@ import {PathCommunicationService} from '../../../_Services/path-communication.se
 export class PathReadComponent implements OnInit {
   private paths: Path[] = [];
   private hasSelection: boolean;
+  private selection: Path; // for CSS binding
 
   constructor(private pathService: PathService, private pathCommunicationService: PathCommunicationService) { }
 
@@ -23,6 +24,7 @@ export class PathReadComponent implements OnInit {
   }
 
   onSelect(path: Path) {
+    this.selection = path;
     this.pathCommunicationService.updatePath(path);
     this.hasSelection = true;
   }
