@@ -22,6 +22,8 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { DashboardComponent } from './Structure/dashboard/dashboard.component';
 import {XhrInterceptor} from './_Security/xhr-interceptor';
 import { PathTasksComponent } from './PathComposition/path-tasks/path-tasks.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import {MatButtonToggleModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,9 @@ import { PathTasksComponent } from './PathComposition/path-tasks/path-tasks.comp
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NoopAnimationsModule,
+    MatButtonToggleModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true}
