@@ -1,9 +1,16 @@
 <section class="main-content">
 
   <div *ngFor="let path of paths" (click)="onSelect(path)">
-    <div [class.selected]="path === selection">{{path.pathName}} - {{path.pathShortDescription}} - {{path.pathLongDescription}} - {{path.pathActive}}</div>
-</div>
-
+    <hr>
+    <div
+      [class.italics]="path.tasks?.length !== 30"
+      [class.selected]="path === selection"
+      [class.inactive]="!path.pathActive"
+    >
+      <bdi class="labels">[</bdi> {{path.pathName}} <bdi class="labels">][</bdi> {{path.pathShortDescription}} <bdi class="labels">][</bdi> {{path.pathLongDescription.substring(0,250)}} <bdi class="labels">][</bdi> ({{path.tasks ? path.tasks.length : 0}})<bdi class="labels">]</bdi>
+    </div>
+  </div>
+  <hr>
 </section>
 
 <section class="side-menu">

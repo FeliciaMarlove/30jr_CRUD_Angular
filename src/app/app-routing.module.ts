@@ -15,12 +15,13 @@ import {TaskCreateComponent} from './Task/TaskCrud/task-create/task-create.compo
 import {PathAddComponent} from './PathComposition/path-add/path-add.component';
 import {PathRemoveComponent} from './PathComposition/path-remove/path-remove.component';
 import {PathTasksComponent} from './PathComposition/path-tasks/path-tasks.component';
+import {AuthGuard} from './_Security/auth.guard';
 
 
 const routes: Routes = [
   { path: 'front-page', component: FrontPageComponent},
   { path: '',   redirectTo: 'front-page', pathMatch: 'full' },
-  { path: 'dashboard', component: DashboardComponent, children: [
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard], children: [
       { path: 'path', component: PathDashComponent, children: [
           { path: 'read', component: PathReadComponent},
           { path: 'update', component: PathUpdateComponent},

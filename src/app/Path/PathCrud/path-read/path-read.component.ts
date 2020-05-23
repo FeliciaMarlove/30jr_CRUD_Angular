@@ -20,7 +20,14 @@ export class PathReadComponent implements OnInit {
   }
 
   public initPaths() {
-    this.pathService.getPaths().subscribe( paths => this.paths = paths);
+    this.pathService.getPaths().subscribe( paths => {
+      this.paths = paths;
+      this.paths.forEach( path => {
+        this.pathService.getTasksOfPath(path.pathId).subscribe( tasks => {
+          path.tasks = tasks;
+        });
+      });
+    });
   }
 
   onSelect(path: Path) {

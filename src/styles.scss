@@ -1,4 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+
+*{
+font-family: Verdana, Arial;
+}
+
 .selected {
   background: orange;
+}
+
+.italics {
+  font-style: italic;
+}
+
+.inactive {
+  color: dimgrey;
+}
+
+.labels {
+  font-weight: bold;
+  color: orangered;
 }
