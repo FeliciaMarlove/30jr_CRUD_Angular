@@ -66,12 +66,13 @@ export class PathAddComponent implements OnInit {
       this.selection.push(task);
       if (this.selection.length + this.tasksFromPath.length === 30) {
         this.full = true;
-        window.alert('Ceci était le dernier défi, le parcours est complement maintenant'); }
+        window.alert('Ceci était le dernier défi, le parcours est complement maintenant');
+      }
     }
   }
 
   onAdd() {
-    this.selection.forEach(oneTask => {
+    for (const oneTask of this.selection) {
       this.pathService.addTask(this.path.pathId, oneTask.taskId, this.position ? this.position - 1 : 666).subscribe(response => {
         if (response.aBoolean === true) {
           this.selection = [];
@@ -82,7 +83,7 @@ export class PathAddComponent implements OnInit {
           this.selection = [];
         }
       });
-    });
+    }
   }
 
   onLeave() {
