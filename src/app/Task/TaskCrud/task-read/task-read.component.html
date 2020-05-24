@@ -6,7 +6,7 @@
       [class.selected]="task === selection"
       [class.inactive]="!task.taskActive"
     >
-      <bdi class="labels">[</bdi>{{task.taskName}} <bdi class="labels">][</bdi> {{task.taskShortDescription}} <bdi class="labels">][</bdi> {{task.taskLongDescription.substring(0,250)}} {{task.taskLongDescription.length > 250 ? '[...]' : ''}}<bdi class="labels">]</bdi>
+      <bdi class="labels">[</bdi>{{task.taskName}} <bdi class="labels">][</bdi> {{task.taskShortDescription}} <bdi class="labels">][</bdi> {{task.taskLongDescription?.substring(0,250)}} {{task.taskLongDescription?.length > 250 ? '[...]' : ''}}<bdi class="labels">]</bdi>
     </div>
   </div>
   <hr>
