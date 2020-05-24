@@ -1,6 +1,7 @@
 <section class="main-content">
   <div class="headline"><strong>Parcours :</strong> {{path.pathName}} <bdi class="labels">|</bdi> {{path.pathShortDescription}}</div>
   <br><br>
+  <div *ngIf="tasks.length === 0">Le parcours ne contient pas encore de défis</div>
   <div *ngFor="let task of tasks, let i = index">
     {{i+1}}. <bdi class="labels">[ </bdi>{{task.taskName}} <bdi class="labels"> ][ </bdi> {{task.taskShortDescription.substring(0,80)}} {{task.taskShortDescription.length > 80 ? '[...]' : ''}}<bdi class="labels"> ]</bdi>
   </div>

@@ -1,7 +1,9 @@
-<form [formGroup]="loginForm" (ngSubmit)="onLogin()">
-  <br><input formControlName="username" placeholder="Identifiant" type="email">
-  <br><input formControlName="password" placeholder="Mot de passe" type="password">
-  <br><button type="submit" [disabled]="loginForm.invalid">Se connecter</button>
+<h4>Connexion à l'application d'administration</h4>
+
+<form class="main-content" style="text-align: center; background-color: orange" [formGroup]="loginForm" (ngSubmit)="onLogin()">
+  <br><br><input style="height: 25px; width: 250px" formControlName="username" placeholder="Identifiant" type="email">
+  <br><br><input style="height: 25px; width: 250px" formControlName="password" placeholder="Mot de passe" type="password">
+  <br><br><button mat-raised-button color="accent" type="submit" [disabled]="loginForm.invalid">Se connecter</button>
 </form>
 
 

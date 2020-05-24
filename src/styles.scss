@@ -49,7 +49,7 @@ $admin-trente-theme: mat-light-theme($admin-trente-primary, $admin-trente-accent
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-button[mat-flat-button] {
+button[mat-flat-button], button[mat-raised-button] {
   font-size: 16px;
   margin: 15px;
 }
