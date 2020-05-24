@@ -73,7 +73,7 @@ export class PathAddComponent implements OnInit {
 
   onAdd() {
     for (const oneTask of this.selection) {
-      this.pathService.addTask(this.path.pathId, oneTask.taskId, this.position ? this.position - 1 : 99999).subscribe(response => {
+      this.pathService.addTask(this.path.pathId, oneTask.taskId, this.position ? this.position - 1 : -1).subscribe(response => {
         if (response.aBoolean === true) {
           this.selection = [];
           this.router.navigateByUrl('/dashboard/path/composition/read');
