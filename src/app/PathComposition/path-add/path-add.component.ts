@@ -73,8 +73,10 @@ export class PathAddComponent implements OnInit {
 
   onAdd() {
     for (const oneTask of this.selection) {
+      setTimeout(() => {
       this.pathService.addTask(this.path.pathId, oneTask.taskId, this.position ? this.position - 1 : -1).subscribe(response => {
         if (response.aBoolean === true) {
+          console.log(oneTask)
           this.selection = [];
           this.router.navigateByUrl('/dashboard/path/composition/read');
         }
@@ -82,7 +84,9 @@ export class PathAddComponent implements OnInit {
           window.alert(response.msg);
           this.selection = [];
         }
+        // }, error => {}, () => { console.log('complete ',oneTask); }
       });
+      }, 1500);
     }
   }
 
