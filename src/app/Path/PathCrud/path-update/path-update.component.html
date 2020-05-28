@@ -1,18 +1,27 @@
 <h4>Modifier le parcours</h4>
 <section class="main-content">
-  <form [formGroup]="form" (ngSubmit)="onUpdate()">
-    <div>Nom :</div>
-    <input formControlName="pathName" maxlength="45" size="40px">
-    <br><br>
-    <div>Desc. courte :</div>
-    <textarea formControlName="pathShortDescription" maxlength="225" rows="3" cols="100"></textarea>
-    <br><br>
-    <div>Desc. longue :</div>
-    <textarea formControlName="pathLongDescription" maxlength="1000" rows="12" cols="100"></textarea>
-    <button mat-flat-button color="primary" type="submit" [disabled]="form.pristine || form.invalid">Enregistrer</button>
-  </form>
-  <button mat-flat-button color="primary" (click)="onActivate()" *ngIf="!path.pathActive" [disabled]="disable">Activer</button>
-  <button mat-flat-button color="primary" (click)="onActivate()" *ngIf="path.pathActive" [disabled]="disable">Desactiver</button>
-  <br>
-  <button mat-flat-button color="warn" (click)="onCancel()">Retour à la liste</button>
+  <section class="box">
+    <section class="split left-list">
+      <form [formGroup]="form">
+        <div>Nom :</div>
+        <input formControlName="pathName" maxlength="45" size="40px">
+        <br><br>
+        <div>Desc. courte :</div>
+        <textarea formControlName="pathShortDescription" maxlength="225" rows="3" cols="100"></textarea>
+        <br><br>
+        <div>Desc. longue :</div>
+        <textarea formControlName="pathLongDescription" maxlength="1000" rows="12" cols="100"></textarea>
+
+      </form>
+    </section>
+    <section class="split right-actions">
+      <button mat-flat-button color="primary" (click)="onUpdate()" [disabled]="form.pristine || form.invalid">Enregistrer</button>
+      <button mat-flat-button color="primary" (click)="onActivate()" *ngIf="!path.pathActive" [disabled]="disable">Activer</button>
+      <button mat-flat-button color="primary" (click)="onActivate()" *ngIf="path.pathActive" [disabled]="disable">Desactiver</button>
+      <br>
+      <button mat-flat-button color="warn" (click)="onCancel()">Retour à la liste</button>
+    </section>
+  </section>
+
+
 </section>

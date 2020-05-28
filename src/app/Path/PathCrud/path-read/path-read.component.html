@@ -1,22 +1,23 @@
 <section class="main-content">
-
-  <div *ngFor="let path of paths" (click)="onSelect(path)">
-    <hr>
-    <div
-      [class.italics]="path.tasks?.length !== 30"
-      [class.selected]="path === selection"
-      [class.inactive]="!path.pathActive"
-    >
-      <bdi class="labels">[</bdi> {{path.pathName}} <bdi class="labels">][</bdi> {{path.pathShortDescription}} <bdi class="labels">][</bdi>{{path.pathLongDescription?.substring(0,250)}}{{path.pathLongDescription?.length > 250 ? '[...]' : ''}} <bdi class="labels"> ][</bdi> ({{path.tasks ? path.tasks.length : 0}})<bdi class="labels">]</bdi>
-    </div>
-  </div>
-  <hr>
-</section>
-
-<section class="side-menu">
-
-  <button mat-flat-button color="primary" [routerLink]="['/dashboard/path/create']">Créer</button>
-  <button mat-flat-button color="primary" [routerLink]="['/dashboard/path/update']" [disabled]="!hasSelection">Modifier</button>
-  <button mat-flat-button color="primary" [routerLink]="['/dashboard/path/composition/read']" [disabled]="!hasSelection">Composition</button>
-
+  <div class="headline">Liste des parcours</div>
+  <section class="box">
+    <section class="split left-list">
+      <div *ngFor="let path of paths" (click)="onSelect(path)">
+        <hr>
+        <div
+          [class.italics]="path.tasks?.length !== 30"
+          [class.selected]="path === selection"
+          [class.inactive]="!path.pathActive"
+        >
+          <bdi class="labels">[</bdi> {{path.pathName}} <bdi class="labels">][</bdi> {{path.pathShortDescription}} <bdi class="labels">][</bdi>{{path.pathLongDescription?.substring(0,250)}}{{path.pathLongDescription?.length > 250 ? '[...]' : ''}} <bdi class="labels"> ][</bdi> ({{path.tasks ? path.tasks.length : 0}})<bdi class="labels">]</bdi>
+        </div>
+      </div>
+      <hr>
+    </section>
+    <section class="split right-actions">
+      <button mat-flat-button color="primary" [routerLink]="['/dashboard/path/create']">Créer</button>
+      <br><button mat-flat-button color="primary" [routerLink]="['/dashboard/path/update']" [disabled]="!hasSelection">Modifier</button>
+      <br><button mat-flat-button color="primary" [routerLink]="['/dashboard/path/composition/read']" [disabled]="!hasSelection">Composition</button>
+    </section>
+  </section>
 </section>

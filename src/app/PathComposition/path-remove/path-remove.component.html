@@ -6,9 +6,9 @@
 <section class="box">
   <section class="split left-list">
 
-    <div *ngFor="let task of tasks" (click)="onSelect(task)">
+    <div *ngFor="let task of tasks; let i = index" (click)="onSelect(task)">
       <hr>
-      <div [class.selected]="selection.includes(task)"><bdi class="labels">[</bdi>{{task.taskName}}<bdi class="labels"> ][</bdi>
+      <div [class.selected]="selection.includes(task)">{{i + 1}}. <bdi class="labels">[</bdi>{{task.taskName}}<bdi class="labels"> ][</bdi>
         {{task.taskShortDescription.substring(0, 80)}} {{task.taskShortDescription.length > 80 ? '[...]' : ''}}
         <bdi class="labels"> ]</bdi>
       </div>
@@ -19,7 +19,7 @@
   <section class="split right-actions">
 
     <button mat-flat-button color="primary" (click)="onDelete()" [disabled]="selection.length === 0">Supprimer</button>
-    <button mat-flat-button color="warn" (click)="onLeave()">Retour</button>
+    <br><button mat-flat-button color="warn" (click)="onLeave()">Retour</button>
 
   </section>
 

@@ -1,21 +1,29 @@
 <section class="main-content">
+  <section class="box">
+    <section class="split left-list">
+      <div *ngFor="let task of tasks" (click)="onSelect(task)">
+        <hr>
+        <div
+          [class.selected]="task === selection"
+          [class.inactive]="!task.taskActive"
+        >
+          <bdi class="labels">[</bdi>{{task.taskName}} <bdi class="labels">][</bdi> {{task.taskShortDescription}} <bdi class="labels">][</bdi> {{task.taskLongDescription?.substring(0,250)}} {{task.taskLongDescription?.length > 250 ? '[...]' : ''}}<bdi class="labels">]</bdi>
+        </div>
+      </div>
+      <hr>
+    </section>
+    <section class="split right-actions">
+      <button mat-flat-button color="primary" [routerLink]="['/dashboard/task/create']">Créer</button>
+      <br><button mat-flat-button color="primary" [routerLink]="['/dashboard/task/update']" [disabled]="!hasSelection">Modifier</button>
+    </section>
+  </section>
 
-  <div *ngFor="let task of tasks" (click)="onSelect(task)">
-    <hr>
-    <div
-      [class.selected]="task === selection"
-      [class.inactive]="!task.taskActive"
-    >
-      <bdi class="labels">[</bdi>{{task.taskName}} <bdi class="labels">][</bdi> {{task.taskShortDescription}} <bdi class="labels">][</bdi> {{task.taskLongDescription?.substring(0,250)}} {{task.taskLongDescription?.length > 250 ? '[...]' : ''}}<bdi class="labels">]</bdi>
-    </div>
-  </div>
-  <hr>
+
 </section>
 
 
 <section class="side-menu">
 
-  <button mat-flat-button color="primary" [routerLink]="['/dashboard/task/create']">Créer</button>
-  <button mat-flat-button color="primary" [routerLink]="['/dashboard/task/update']" [disabled]="!hasSelection">Modifier</button>
+
 
 </section>
