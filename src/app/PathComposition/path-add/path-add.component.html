@@ -22,7 +22,7 @@
 
     <section class="split right-actions">
 
-      <button mat-flat-button color="primary" (click)="onAdd()" [disabled]="conflict || selection.length === 0">
+      <button mat-flat-button color="primary" (click)="onAdd()" [disabled]="conflict || selection.length === 0 || position === 0 || position > tasksFromPath.length + 1">
         Ajouter
       </button>
       <button mat-flat-button color="warn" (click)="onLeave()">Retour</button>
@@ -30,7 +30,7 @@
       <br>Position (facultatif)
       <br>(comprise entre 1 et {{tasksFromPath.length + 1}})
       <br><br>
-      <input type="number" min="0" [(ngModel)]="position" [disabled]="selection.length > 1">
+      <input type="number" min="1" [(ngModel)]="position" [disabled]="selection.length > 1">
 
     </section>
   </section>
