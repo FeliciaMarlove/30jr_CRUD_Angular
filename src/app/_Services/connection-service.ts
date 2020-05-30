@@ -17,11 +17,7 @@ export class ConnectionService {
   }
 
   public connect(user: User): Observable<User> {
-  const headersAuth = {
-    headers: new HttpHeaders((user ? {
-      authorization: 'Basic ' + btoa(user.email + ':' + user.password)
-    } : {}))  };
   sessionStorage.setItem('auth', btoa(user.email + ':' + user.password));
-  return this.http.post<User>(URI + 'connect', user, headersAuth);
+  return this.http.post<User>(URI + 'connect', user);
   }
 }

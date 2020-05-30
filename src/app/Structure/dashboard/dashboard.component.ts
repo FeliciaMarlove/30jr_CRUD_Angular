@@ -15,6 +15,7 @@ export class DashboardComponent implements OnInit {
   }
 
   public logout() {
+    this.connectionService.authenticated = false;
     sessionStorage.setItem('auth', undefined);
     sessionStorage.removeItem('auth');
     sessionStorage.clear();
