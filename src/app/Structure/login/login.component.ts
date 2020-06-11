@@ -10,12 +10,21 @@ import {HttpHeaders} from '@angular/common/http';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
+/**
+ * Connexion à l'application.
+ */
 export class LoginComponent implements OnInit {
   private loginForm: FormGroup;
 
   constructor(private fb: FormBuilder, private connService: ConnectionService, private router: Router) {
   }
 
+  /**
+   * Vérifie si un utilisateur est connecté et navigue vers le tableau de bord si c'est le cas.
+   * Instancie un formulaire réactif avec les champs suivants :
+   *  username (requis) : l'identifiant de connexion
+   *  password (requis) : le mot de passe
+   */
   ngOnInit() {
     if (sessionStorage.getItem('auth') !== null) {
       this.router.navigateByUrl('/dashboard/path/read');
@@ -26,6 +35,14 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  /**
+   * Effectue une tentative de connexion avec l'identifiant et le mot de passe renseignés dans le formulaire.
+   * Vérifie que le rôle de l'utilisateur est "administrateur" et :
+   *  Définit l'utilisateur comme autentifié.
+   *  Navigue vers le tableau de bord.
+   * Si l'utilisateur n'a pas le statut d'administrateur, nettoie la variable de session et affiche une alerte.
+   * Si les identifiants ne sont pas corrects, nettoie la variable de session et affiche une alerte.
+   */
   onLogin() {
     const DTO = {email: this.loginForm.controls.username.value, password: this.loginForm.controls.password.value};
     this.connService.connect(DTO).subscribe(response => {

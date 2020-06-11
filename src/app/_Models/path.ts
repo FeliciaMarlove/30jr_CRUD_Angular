@@ -1,5 +1,8 @@
 import { Task } from './task';
 
+/**
+ * Modèle : parcours
+ */
 export interface Path {
   pathId: number;
   pathName: string;

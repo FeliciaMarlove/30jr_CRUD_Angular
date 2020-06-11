@@ -8,6 +8,9 @@ import {Router} from '@angular/router';
   templateUrl: './path-create.component.html',
   styleUrls: ['./path-create.component.scss']
 })
+/**
+ * Création de parcours
+ */
 export class PathCreateComponent implements OnInit {
   private form: FormGroup;
 
@@ -17,6 +20,12 @@ export class PathCreateComponent implements OnInit {
     private router: Router
   ) { }
 
+  /**
+   * Initialise un formulaire réactif avec les champs suivants :
+   *  pathName (requis)
+   *  pathShortDescription (requis)
+   *  pathLongDescription
+   */
   ngOnInit() {
     this.form = this.fb.group( {
       pathName : ['', Validators.required],
@@ -25,6 +34,11 @@ export class PathCreateComponent implements OnInit {
     });
   }
 
+  /**
+   * Appelle la méthode de création de parcours.
+   * Affiche une alerte contenant un message d'erreur si la création échoue.
+   * Réinitialise le formulaire si la création réussit.
+   */
   onCreate() {
     this.pathService.createPath(this.form.value).subscribe( response => {
       if (!response.pathId) {
@@ -35,6 +49,10 @@ export class PathCreateComponent implements OnInit {
     });
   }
 
+  /**
+   * Annule et redirige vers la page d'affichage des parcours.
+   * Exige une confirmation dans une fenêtre pop-up si le formulaire a été modifié.
+   */
   onCancel() {
     if (!this.form.pristine) {
       if (confirm('Les modifications dans le formulaire vont être perdues, continuer ?')) {

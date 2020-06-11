@@ -10,6 +10,9 @@ import {Router} from '@angular/router';
   templateUrl: './task-update.component.html',
   styleUrls: ['./task-update.component.scss']
 })
+/**
+ * Modification des tâches
+ */
 export class TaskUpdateComponent implements OnInit {
   private task: Task;
   private form: FormGroup;
@@ -22,6 +25,13 @@ export class TaskUpdateComponent implements OnInit {
     private router: Router
   ) { }
 
+  /**
+   * Récupère la tâche sélectionnée.
+   * Initialise un formulaire réactif avec les champs suivants :
+   *  taskName (requis) : initialisé avec le nom de la tâche sélectionnée
+   *  taskShortDescription (requis) : initialisé avec la description courte de la tâche sélectionnée
+   *  taskLongDescription : initialisé avec la description longue de la tâche sélectionnée
+   */
   ngOnInit() {
     this.taskCommunicationService.getTask().subscribe( task => {
       this.task = task;
@@ -33,6 +43,11 @@ export class TaskUpdateComponent implements OnInit {
     });
   }
 
+  /**
+   * Appelle la méthode de modification de la tâche.
+   * Affiche un message d'alerte en cas d'échec de la mise à jour.
+   * Nettoie la tâche sélectionnée et redirige vers la liste des tâches en cas de réussite.
+   */
   onUpdate() {
     this.taskService.updateTask(this.task.taskId, this.form.value).subscribe( response => {
       if (response.taskId) {
@@ -44,6 +59,10 @@ export class TaskUpdateComponent implements OnInit {
     } );
   }
 
+  /**
+   * Désactive ou active la tâche en fonction de son état initial.
+   * Affiche une fenêtre indiquant la réussite ou l'échec de l'opération.
+   */
   onActivate() {
     if (this.task.taskActive) {
       this.taskService.desactivateTask(this.task.taskId).subscribe( response => {
@@ -67,6 +86,10 @@ export class TaskUpdateComponent implements OnInit {
     }
   }
 
+  /**
+   * Annule et revient à la liste des tâches.
+   * Demande la confirmation de l'utilisateur si le formulaire à été modifié.
+   */
   onCancel() {
     if (!this.form.pristine) {
       if (confirm('Les modifications dans le formulaire vont être perdues, continuer ?')) {

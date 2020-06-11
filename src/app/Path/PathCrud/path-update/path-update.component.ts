@@ -10,6 +10,9 @@ import {Router} from '@angular/router';
   templateUrl: './path-update.component.html',
   styleUrls: ['./path-update.component.scss']
 })
+/**
+ * Modification des parcours
+ */
 export class PathUpdateComponent implements OnInit {
   private path: Path;
   private form: FormGroup;
@@ -22,6 +25,13 @@ export class PathUpdateComponent implements OnInit {
     private router: Router
   ) { }
 
+  /**
+   * Récupère le parcours sélectionné.
+   * Initialise un formulaire réactif avec les champs suivants :
+   *  pathName (requis) : initialisé avec le nom du parcours sélectionné
+   *  pathShortDescription (requis) : initialisé avec la description courte du parcours sélectionné
+   *  pathLongDescription : initialisé avec la description longue du parcours sélectionné
+   */
   ngOnInit() {
     this.pathCommunicationService.getPath().subscribe( path => {
       this.path = path;
@@ -33,6 +43,11 @@ export class PathUpdateComponent implements OnInit {
     });
   }
 
+  /**
+   * Appelle la méthode de modification du parcours.
+   * Affiche un message d'alerte en cas d'échec de la mise à jour.
+   * Nettoie le parcours sélectionné et redirige vers la liste des parcours en cas de réussite.
+   */
   onUpdate() {
     this.pathService.updatePath(this.path.pathId, this.form.value).subscribe( response => {
       if (response.pathId) {
@@ -44,6 +59,10 @@ export class PathUpdateComponent implements OnInit {
     });
   }
 
+  /**
+   * Désactive ou active le parcours en fonction de son état initial.
+   * Affiche une fenêtre indiquant la réussite ou l'échec de l'opération.
+   */
   onActivate() {
     if (this.path.pathActive) {
       this.pathService.desactivatePath(this.path.pathId).subscribe( response => {
@@ -67,6 +86,10 @@ export class PathUpdateComponent implements OnInit {
     }
   }
 
+  /**
+   * Annule et revient à la liste des parcours.
+   * Demande la confirmation de l'utilisateur si le formulaire à été modifié.
+   */
   onCancel() {
     if (!this.form.pristine) {
       if (confirm('Les modifications dans le formulaire vont être perdues, continuer ?')) {

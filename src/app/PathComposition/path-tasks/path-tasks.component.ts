@@ -9,6 +9,9 @@ import {PathCommunicationService} from '../../_Services/path-communication.servi
   templateUrl: './path-tasks.component.html',
   styleUrls: ['./path-tasks.component.scss']
 })
+/**
+ * Affichage de la composition d'un parcours.
+ */
 export class PathTasksComponent implements OnInit {
   private tasks: Task[] = [];
   private path: Path;
@@ -18,6 +21,10 @@ export class PathTasksComponent implements OnInit {
     private pathService: PathService,
     private pathCommunicationService: PathCommunicationService) { }
 
+  /**
+   * Récupère le parcours sélectionné.
+   * Appelle iniTasks()
+   */
   ngOnInit() {
     this.pathCommunicationService.getPath().subscribe( path => {
       this.path = path;
@@ -25,6 +32,9 @@ export class PathTasksComponent implements OnInit {
     this.initTasks();
   }
 
+  /**
+   * Récupère les tâches du parcours et initialise sa taille.
+   */
   initTasks() {
     this.pathService.getTasksOfPath(this.path.pathId).subscribe( tasks => {
       this.tasks = tasks;

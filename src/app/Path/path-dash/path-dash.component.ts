@@ -5,6 +5,10 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './path-dash.component.html',
   styleUrls: ['./path-dash.component.scss']
 })
+/**
+ * Container pour les Components liés aux parcours
+ * Utilise router-outlet pour afficher dynamiquement l'écran en fonction de l'url
+ */
 export class PathDashComponent implements OnInit {
 
   constructor() { }

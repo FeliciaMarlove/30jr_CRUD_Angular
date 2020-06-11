@@ -12,6 +12,9 @@ import {flatMap, map, tap} from 'rxjs/operators';
   templateUrl: './path-add.component.html',
   styleUrls: ['./path-add.component.scss']
 })
+/**
+ * Ajout de tâches dans un parcours
+ */
 export class PathAddComponent implements OnInit {
   private tasksActive: Task[] = [];
   private tasksFromPath: Task[] = [];
@@ -29,12 +32,21 @@ export class PathAddComponent implements OnInit {
   ) {
   }
 
+  /**
+   * Initialise selection à un tableau vide.
+   * Appelle initPath()
+   * Appelle initTasksActive()
+   */
   ngOnInit() {
     this.selection = [];
     this.initPath();
     this.initTasksActive();
   }
 
+  /**
+   * Récupère le parcours sélectionné.
+   * Récupère la liste des tâches du parcours.
+   */
   initPath() {
     this.pathCommunicationService.getPath().subscribe(path => {
       this.path = path;
@@ -42,6 +54,9 @@ export class PathAddComponent implements OnInit {
     });
   }
 
+  /**
+   * Récupère la liste des tâches dont le statut est "actif".
+   */
   initTasksActive() {
     this.taskService.getTasks().subscribe(tasks => {
       tasks.forEach(task => {
@@ -52,6 +67,12 @@ export class PathAddComponent implements OnInit {
     });
   }
 
+  /**
+   * Ajoute la tâche sélectionnée à la sélection.
+   * Vérifie que la liste de tâche n'est pas complète (length === 30).
+   * Vérifie que l'utilisateur n'essaie pas d'entrer une position lors d'une sélection multiple.
+   * @param task la tâche à ajouter dans la liste
+   */
   onSelect(task: Task) {
     if (this.selection.length + this.tasksFromPath.length < 30) {
       if (this.selection.length > 0 && this.position) {
@@ -71,6 +92,11 @@ export class PathAddComponent implements OnInit {
     }
   }
 
+  /**
+   * Ajoute la ou les tâches sélectionnées au parcours.
+   * Affiche un message d'erreur et vide la liste de tâches en cas d'échec.
+   * Vide la liste de tâches et navigue vers la composition du parcours en cas de réussite.
+   */
   onAdd() {
     for (const oneTask of this.selection) {
         // setTimeout(() => {
@@ -91,6 +117,10 @@ export class PathAddComponent implements OnInit {
       }
   }
 
+  /**
+   * Permet d'annuler et de revenir à la composition de parcours.
+   * Demande confirmation sur au moins une tâche est sélectionnée.
+   */
   onLeave() {
     if (this.selection.length > 0) {
       if (confirm('Voulez-vous quitter sans apporter les modifications ?')) {

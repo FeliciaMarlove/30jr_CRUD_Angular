@@ -10,6 +10,9 @@ import {Router} from '@angular/router';
   templateUrl: './path-remove.component.html',
   styleUrls: ['./path-remove.component.scss']
 })
+/**
+ * Suppression de tâches d'un parcours.
+ */
 export class PathRemoveComponent implements OnInit {
   private path: Path;
   private tasks: Task[] = [];
@@ -21,11 +24,19 @@ export class PathRemoveComponent implements OnInit {
     private pathService: PathService
   ) { }
 
+  /**
+   * Initialise selection à un tableau vide.
+   * Appelle initPath()
+   */
   ngOnInit() {
     this.selection = [];
     this.initPath();
   }
 
+  /**
+   * Récupère le parcours sélectionné.
+   * Récupère la liste de tâches du parcours.
+   */
   initPath() {
     this.pathCommunicationService.getPath().subscribe( path => {
       this.path = path;
@@ -33,10 +44,18 @@ export class PathRemoveComponent implements OnInit {
     } );
   }
 
+  /**
+   * Ajoute une tâche à la sélection.
+   * @param task la tâche sélectionnée
+   */
   onSelect(task: Task) {
     this.selection.push(task);
   }
 
+  /**
+   * Permet d'annuler et de revenir à la composition de parcours.
+   * Demande une confirmation si au moins une tâche est sélectionnée.
+   */
   onLeave() {
     if (this.selection.length > 0) {
       if (confirm('Voulez-vous quitter sans apporter les modifications ?')) {
@@ -48,6 +67,11 @@ export class PathRemoveComponent implements OnInit {
     }
   }
 
+  /**
+   * Supprime les tâches sélectionnées.
+   * Affiche un message de confirmation ou d'erreur selon le résultat de l'opération.
+   * Vide la sélection et navigue vers la composition en cas de réussite.
+   */
   onDelete() {
     this.selection.forEach(task => {
       this.pathService.removeTask(this.path.pathId, task.taskId).subscribe( response => {

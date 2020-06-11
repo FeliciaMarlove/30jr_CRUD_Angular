@@ -7,7 +7,7 @@ import {HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
 export class XhrInterceptor implements HttpInterceptor {
 
   /**
-   * clone les headers pour les requêtes http
+   * Clone les headers pour toutes les requêtes http (Basic auth)
    * @param req
    * @param next
    */

@@ -8,6 +8,9 @@ import {PathCommunicationService} from '../../../_Services/path-communication.se
   templateUrl: './path-read.component.html',
   styleUrls: ['./path-read.component.scss']
 })
+/**
+ * Affiche les parcours
+ */
 export class PathReadComponent implements OnInit {
   private paths: Path[] = [];
   private hasSelection: boolean;
@@ -15,10 +18,16 @@ export class PathReadComponent implements OnInit {
 
   constructor(private pathService: PathService, private pathCommunicationService: PathCommunicationService) { }
 
+  /**
+   * Appelle initPaths().
+   */
   ngOnInit() {
     this.initPaths();
   }
 
+  /**
+   * Récupère la liste des parcours et la liste des tâches pour chaque parcours.
+   */
   public initPaths() {
     this.pathService.getPaths().subscribe( paths => {
       this.paths = paths;
@@ -30,6 +39,10 @@ export class PathReadComponent implements OnInit {
     });
   }
 
+  /**
+   * Sélectionne un parcours
+   * @param path le parcours sélectionné
+   */
   onSelect(path: Path) {
     this.selection = path;
     this.pathCommunicationService.updatePath(path);

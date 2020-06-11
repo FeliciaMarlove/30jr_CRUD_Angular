@@ -8,6 +8,9 @@ import {TaskCommunicationService} from '../../../_Services/task-communication.se
   templateUrl: './task-read.component.html',
   styleUrls: ['./task-read.component.scss']
 })
+/**
+ * Affiche les tâches
+ */
 export class TaskReadComponent implements OnInit {
   private tasks: Task[];
   private hasSelection: boolean;
@@ -15,14 +18,24 @@ export class TaskReadComponent implements OnInit {
 
   constructor(private taskService: TaskService, private taskCommunicationService: TaskCommunicationService) { }
 
+  /**
+   * Appelle initTasks().
+   */
   ngOnInit() {
     this.initTasks();
   }
 
+  /**
+   * Récupère la liste des tâches.
+   */
   initTasks() {
     this.taskService.getTasks().subscribe( tasks => this.tasks = tasks);
   }
 
+  /**
+   * Sélectionne une tâche
+   * @param path la tâche sélectionnée
+   */
   onSelect(task: Task) {
     this.selection = task;
     this.taskCommunicationService.updateTask(task);
