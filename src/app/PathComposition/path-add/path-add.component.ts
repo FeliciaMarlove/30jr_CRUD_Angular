@@ -21,7 +21,6 @@ export class PathAddComponent implements OnInit {
   private path: Path;
   private selection: Task[] = [];
   private position: number;
-  private full: boolean;
   private conflict: boolean;
 
   constructor(
@@ -86,7 +85,6 @@ export class PathAddComponent implements OnInit {
       }
       this.selection.push(task);
       if (this.selection.length + this.tasksFromPath.length === 30) {
-        this.full = true;
         window.alert('Ceci était le dernier défi, le parcours est complet maintenant');
       }
     }
@@ -104,6 +102,7 @@ export class PathAddComponent implements OnInit {
               .subscribe(response => {
                     if (response.aBoolean === true) {
                       this.selection = [];
+                      window.alert('Défi(s) ajouté(s)');
                       this.router.navigateByUrl('/dashboard/path/composition/read');
                     }
                     if (response.aBoolean === false) {

@@ -2,8 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ConnectionService} from '../../_Services/connection-service';
 import {Router} from '@angular/router';
-import {User} from '../../_Models/user';
-import {HttpHeaders} from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
