@@ -1,25 +1,23 @@
 <h4>Nouveau défi</h4>
 <section class="main-content">
-<section class="box">
-  <section class="split left-list">
-    <form [formGroup]="form">
-      <div>Nom :</div>
-      <input formControlName="taskName" maxlength="45" size="40px">
-      <br><br>
-      <div>Desc. courte :</div>
-      <textarea formControlName="taskShortDescription" maxlength="225" rows="3" cols="60"></textarea>
-      <br><br>
-      <div>Desc. longue :</div>
-      <textarea formControlName="taskLongDescription" maxlength="1000" rows="12" cols="60"></textarea>
+  <section class="box">
+    <section class="split left-list">
+      <form [formGroup]="form">
+        <div>Nom :</div>
+        <input formControlName="taskName" maxlength="45" size="40px">
+        <br><br>
+        <div>Desc. courte :</div>
+        <textarea formControlName="taskShortDescription" maxlength="225" rows="3" cols="60"></textarea>
+        <br><br>
+        <div>Desc. longue :</div>
+        <textarea formControlName="taskLongDescription" maxlength="1000" rows="12" cols="60"></textarea>
 
-    </form>
+      </form>
+    </section>
+    <section class="split right-actions">
+      <button mat-flat-button color="primary" (click)="onCreate()" [disabled]="form.pristine || form.invalid">Enregistrer</button>
+      <button mat-flat-button color="warn" (click)="onCancel()">Retour à la liste</button>
+    </section>
   </section>
-  <section class="split right-actions">
-    <button mat-flat-button color="primary" (click)="onCreate()" [disabled]="form.pristine || form.invalid">Enregistrer</button>
-    <button mat-flat-button color="warn" (click)="onCancel()">Retour à la liste</button>
-  </section>
-</section>
-
-
 </section>
 

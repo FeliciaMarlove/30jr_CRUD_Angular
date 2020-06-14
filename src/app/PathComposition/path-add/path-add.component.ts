@@ -96,24 +96,30 @@ export class PathAddComponent implements OnInit {
    * Vide la liste de tâches et navigue vers la composition du parcours en cas de réussite.
    */
   onAdd() {
+    let size = this.selection.length;
+    let cpt = 0;
     for (const oneTask of this.selection) {
-        // setTimeout(() => {
-            this.pathService.addTask(this.path.pathId, oneTask.taskId, this.position ? this.position - 1 : -99)
-              .subscribe(response => {
-                    if (response.aBoolean === true) {
-                      this.selection = [];
-                      window.alert('Défi(s) ajouté(s)');
-                      this.router.navigateByUrl('/dashboard/path/composition/read');
-                    }
-                    if (response.aBoolean === false) {
-                      window.alert(response.msg);
-                      this.selection = [];
-                    }
-                    // }, error => {}, () => { console.log('complete ',oneTask); }
-                }
-              );
-         // }, 10000);
-      }
+      this.pathService.addTask(this.path.pathId, oneTask.taskId, this.position ? this.position - 1 : -99)
+        .subscribe(response => {
+            size--;
+            if (response.aBoolean === true) {
+              cpt++;
+            }
+            if (response.aBoolean === false) {
+              window.alert(response.msg);
+            }
+          }, error => { console.log(error); this.selection = [];
+          }, () => {
+            if (size === 0) {
+              this.selection = [];
+              this.router.navigateByUrl('/dashboard/path/composition/read');
+              if (cpt > 0) {
+                window.alert(cpt + ' défi(s) ajouté(s)');
+              }
+            }
+          }
+        );
+    }
   }
 
   /**
