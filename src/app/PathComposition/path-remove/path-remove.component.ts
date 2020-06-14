@@ -73,16 +73,26 @@ export class PathRemoveComponent implements OnInit {
    * Vide la sélection et navigue vers la composition en cas de réussite.
    */
   onDelete() {
+    let size = this.selection.length;
+    let cpt = 0;
     this.selection.forEach(task => {
       this.pathService.removeTask(this.path.pathId, task.taskId).subscribe( response => {
+        size--;
         if (response.aBoolean === true) {
-          window.alert('Défi(s) supprimé(s) du parcours')
-          this.selection = [];
-          this.router.navigateByUrl('/dashboard/path/composition/read');
+          cpt++;
         } else {
           window.alert(response.msg);
         }
-      });
+      }, error => console.log(error), () => {
+        if (size === 0) {
+          if (cpt > 0) {
+            window.alert(cpt + ' défi(s) supprimé(s) du parcours')
+          }
+          this.selection = [];
+          this.router.navigateByUrl('/dashboard/path/composition/read');
+        }
+        }
+      );
     });
   }
 }
