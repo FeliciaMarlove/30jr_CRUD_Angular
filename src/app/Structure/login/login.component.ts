@@ -12,7 +12,7 @@ import {Router} from '@angular/router';
  * Connexion à l'application.
  */
 export class LoginComponent implements OnInit {
-  private loginForm: FormGroup;
+  loginForm: FormGroup;
 
   constructor(private fb: FormBuilder, private connService: ConnectionService, private router: Router) {
   }

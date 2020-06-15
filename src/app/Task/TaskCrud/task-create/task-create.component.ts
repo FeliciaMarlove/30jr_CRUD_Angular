@@ -12,7 +12,7 @@ import {Router} from '@angular/router';
  * Création de tâche
  */
 export class TaskCreateComponent implements OnInit {
-  private form: FormGroup;
+  form: FormGroup;
 
   constructor(
     private taskService: TaskService,

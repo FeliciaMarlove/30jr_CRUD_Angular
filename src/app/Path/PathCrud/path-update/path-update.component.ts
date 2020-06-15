@@ -14,9 +14,9 @@ import {Router} from '@angular/router';
  * Modification des parcours
  */
 export class PathUpdateComponent implements OnInit {
-  private path: Path;
-  private form: FormGroup;
-  private disable: boolean;
+  path: Path;
+  form: FormGroup;
+  disable: boolean;
 
   constructor(
     private pathCommunicationService: PathCommunicationService,

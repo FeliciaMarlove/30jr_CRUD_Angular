@@ -13,9 +13,9 @@ import {PathCommunicationService} from '../../_Services/path-communication.servi
  * Affichage de la composition d'un parcours.
  */
 export class PathTasksComponent implements OnInit {
-  private tasks: Task[] = [];
-  private path: Path;
-  private pathLength: number;
+  tasks: Task[] = [];
+  path: Path;
+  pathLength: number;
 
   constructor(
     private pathService: PathService,

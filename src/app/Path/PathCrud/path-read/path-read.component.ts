@@ -12,9 +12,9 @@ import {PathCommunicationService} from '../../../_Services/path-communication.se
  * Affiche les parcours
  */
 export class PathReadComponent implements OnInit {
-  private paths: Path[] = [];
-  private hasSelection: boolean;
-  private selection: Path; // for CSS binding
+  paths: Path[] = [];
+  hasSelection: boolean;
+  selection: Path; // for CSS binding
 
   constructor(private pathService: PathService, private pathCommunicationService: PathCommunicationService) { }
 

@@ -12,7 +12,7 @@ import {Router} from '@angular/router';
  * Création de parcours
  */
 export class PathCreateComponent implements OnInit {
-  private form: FormGroup;
+  form: FormGroup;
 
   constructor(
     private pathService: PathService,

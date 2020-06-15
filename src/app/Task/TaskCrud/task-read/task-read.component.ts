@@ -12,9 +12,9 @@ import {TaskCommunicationService} from '../../../_Services/task-communication.se
  * Affiche les tâches
  */
 export class TaskReadComponent implements OnInit {
-  private tasks: Task[];
-  private hasSelection: boolean;
-  private selection: Task;  // for CSS binding
+  tasks: Task[];
+  hasSelection: boolean;
+  selection: Task;  // for CSS binding
 
   constructor(private taskService: TaskService, private taskCommunicationService: TaskCommunicationService) { }
 

@@ -16,12 +16,12 @@ import {flatMap, map, tap} from 'rxjs/operators';
  * Ajout de tâches dans un parcours
  */
 export class PathAddComponent implements OnInit {
-  private tasksActive: Task[] = [];
-  private tasksFromPath: Task[] = [];
-  private path: Path;
-  private selection: Task[] = [];
-  private position: number;
-  private conflict: boolean;
+  tasksActive: Task[] = [];
+  tasksFromPath: Task[] = [];
+  path: Path;
+  selection: Task[] = [];
+  position: number;
+  conflict: boolean;
 
   constructor(
     private pathCommunicationService: PathCommunicationService,

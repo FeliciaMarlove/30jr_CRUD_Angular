@@ -14,9 +14,9 @@ import {Router} from '@angular/router';
  * Suppression de tâches d'un parcours.
  */
 export class PathRemoveComponent implements OnInit {
-  private path: Path;
-  private tasks: Task[] = [];
-  private selection: Task[] = [];
+  path: Path;
+  tasks: Task[] = [];
+  selection: Task[] = [];
 
   constructor(
     private pathCommunicationService: PathCommunicationService,

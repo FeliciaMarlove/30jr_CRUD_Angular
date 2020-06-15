@@ -14,9 +14,9 @@ import {Router} from '@angular/router';
  * Modification des tâches
  */
 export class TaskUpdateComponent implements OnInit {
-  private task: Task;
-  private form: FormGroup;
-  private disable: boolean;
+  task: Task;
+  form: FormGroup;
+  disable: boolean;
 
   constructor(
     private taskCommunicationService: TaskCommunicationService,
