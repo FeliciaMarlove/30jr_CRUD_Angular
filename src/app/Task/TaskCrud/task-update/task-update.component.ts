@@ -70,7 +70,7 @@ export class TaskUpdateComponent implements OnInit {
           window.alert('Défi désactivé');
           this.disable = true;
         } else {
-          window.alert(response.msg.fontcolor('red'));
+          window.alert(response.msg);
         }
       });
     }
@@ -80,7 +80,7 @@ export class TaskUpdateComponent implements OnInit {
           window.alert('Défi activé');
           this.disable = true;
         } else {
-          window.alert(response.msg.fontcolor('red'));
+          window.alert(response.msg);
         }
       });
     }

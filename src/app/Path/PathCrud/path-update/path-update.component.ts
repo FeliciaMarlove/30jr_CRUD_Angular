@@ -70,7 +70,7 @@ export class PathUpdateComponent implements OnInit {
           window.alert('Parcours désactivé');
           this.disable = true;
         } else {
-          window.alert(response.msg.fontcolor('red'));
+          window.alert(response.msg);
         }
       });
     }
@@ -80,7 +80,7 @@ export class PathUpdateComponent implements OnInit {
           window.alert('Parcours activé');
           this.disable = true;
         } else {
-          window.alert(response.msg.fontcolor('red'));
+          window.alert(response.msg);
         }
       });
     }
