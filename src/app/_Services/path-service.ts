@@ -4,7 +4,7 @@ import {Path} from '../_Models/path';
 import {Observable} from 'rxjs';
 import { Task } from '../_Models/task';
 
-const URI = 'http://localhost:8080/admin/api/path/';
+const URI = '/admin/api/path/';
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type' : 'application/json'})
 };
@@ -31,7 +31,7 @@ export class PathService {
   /**
    * Récupère un parcours
    * Retourne un Observable de type Path
-   * @param id l'ID du parcours 
+   * @param id l'ID du parcours
    */
   public getPath(id: number): Observable<Path> {
     return this.http.get<Path>(URI + id);

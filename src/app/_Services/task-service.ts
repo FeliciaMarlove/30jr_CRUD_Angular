@@ -4,7 +4,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import { Task } from '../_Models/task';
 
-const URI = 'http://localhost:8080/admin/api/task/';
+const URI = '/admin/api/task/';
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type' : 'application/json'})
 };
@@ -38,7 +38,7 @@ export class TaskService {
   }
 
   /**
-   * Crée une tâche   
+   * Crée une tâche
    * Retourne un Observable de type any
    * @param task la tâche à créer
    */
