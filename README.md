@@ -1,4 +1,7 @@
-# AdminTrente
+# Management application
+## Purpose of the app
+The application allows users to participate in a "daily challenge". 
+Every day, a new task is shown to the user for them to execute. This part of the application is the management interface, which allows to create challenge paths, with a name and description, to add daily challenges to the paths, with a name, summary and description, and to manage all the data (edit, delete...) from a computer with a user-friendly interface.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.8.
 
